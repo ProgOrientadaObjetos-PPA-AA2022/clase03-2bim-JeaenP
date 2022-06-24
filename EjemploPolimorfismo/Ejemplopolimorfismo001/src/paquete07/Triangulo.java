@@ -9,6 +9,33 @@ package paquete07;
  *
  * @author reroes
  */
-public class Triangulo {
+public class Triangulo extends Figura{
+    double base;
+    double altura;
+
+    public Triangulo(double base, double altura, String caracteristicas) {
+        super(caracteristicas);
+        this.base = base;
+        this.altura = altura;
+    }
     
+    @Override
+    public void calcularArea() {
+        area = (base * altura)/2;
+    }
+    public double getBase() {
+        return base;
+    }
+
+    public void setBase(double base) {
+        this.base = base;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
 }

@@ -9,6 +9,23 @@ package paquete07;
  *
  * @author reroes
  */
-public class Cuadrado {
-       
+public class Cuadrado extends Figura {
+      double lado;
+
+    public Cuadrado(double lado, String caracteristicas) {
+        super(caracteristicas);
+        this.lado = lado;
+    }
+    
+    public void calcularArea() {
+        area = lado * lado;
+    }
+    public double getLado() {
+        return lado;
+    }
+
+    public void setLado(double lado) {
+        this.lado = lado;
+    }
+      
 }

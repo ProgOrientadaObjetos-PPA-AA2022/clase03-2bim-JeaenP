@@ -21,12 +21,13 @@ public class EjecutaEstudiante {
         int tipoEstudiante;
         String continuar;
         int contador;
-        Estudiante [] estudiantes = new Estudiante[10];
+        int limite = 3;
+        Estudiante [] estudiantes = new Estudiante[limite];
 
         // Incio ciclo repetitivo que permite generar 10 objetos de tipo
         // EstudiantePresencial y EstudianteDistancia 
         contador = 0;
-        while(contador<10){
+        while(contador<limite){
             // Se imprime mensaje en pantalla para solicitar
             // el tipo de estudiante que se desea ingresar
             System.out.println("Tipo de Estudiante a ingresar\n"
