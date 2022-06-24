@@ -44,7 +44,8 @@ public class EstudiantePresencial extends Estudiante{
         return costoCredito;
     }
     
-    String cadena = String.format("Datos Estudiante\n"
+    public String toString() {
+        String cadena = String.format("Datos Estudiante\n"
                         + "Nombres: %s\n"
                         + "Apellidos: %s\n"
                         + "Identificación: %s\n"
@@ -56,5 +57,7 @@ public class EstudiantePresencial extends Estudiante{
                   obtenerEdadEstudiante(),
                   obtenerMatricula());
         return cadena;
+    }
+    
     
 }

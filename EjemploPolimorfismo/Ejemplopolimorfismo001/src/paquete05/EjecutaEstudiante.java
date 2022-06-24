@@ -26,27 +26,21 @@ public class EjecutaEstudiante {
         int numeroCreds;
         double costoAsig;
         int numeroAsigs;
-        int tipoEstudiante;
-        String continuar;
         // se crea una variable(op) para usarla en el ciclo do-while
         int op;
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         
         // inicio de solución
         System.out.println("Elija una opcion");
-        System.out.println("1) ");
-        do{ 
-            System.out.println("Tipo de Estudiante a ingresar\n"
-                    + "Ingrese (1) para Estudiante Presencial"
-                    + "Ingrese (2) para Estudiante Distancia");
-            // se captura el valor ingresado por el usuario en 
-            // la variable tipoEstudiante
-            tipoEstudiante = entrada.nextInt();
-            entrada.nextLine();
-            // Solicitar el ingreso de valores para las variables
-
-            // Solicitar nombresEst, apellidosEst, identificacionEst, edadEst
-            // Leer nombresEst, apellidosEst, identificacionEst, edadEst
+        System.out.println("1) Ingresar un Estudiante Presencial");
+        System.out.println("2) Ingresar un Estudiante Distancia");
+        System.out.println("0) Salir");
+        op = entrada.nextInt();
+        entrada.nextLine();
+        
+        while ( op != 0 && ( op == 1 || op == 2)) {
+            // se solicita el ingreso de los valores para atributos de la super clase
+            // fuera de los siguientes if debido a que son los mismos en ambos casos
             System.out.println("Ingrese los nombres del estudiante");
             nombresEst = entrada.nextLine();
             System.out.println("Ingrese los apellidos del estudiante");
@@ -56,46 +50,41 @@ public class EjecutaEstudiante {
             System.out.println("Ingrese la edad del estudiante");
             edadEst = entrada.nextInt();
 
-            if (tipoEstudiante == 1) {
+            if (op == 1) {
 
-                // Declarar,crear e iniciar objeto tipo EstudiantePresencial
+                // crear objeto de ripo estudiante presencial
                 EstudiantePresencial estudianteP = new EstudiantePresencial();
-                // Solicitar ingreso de valores para variables 
-                // Solicitar numeroCreds, costoCred
-                // Leer numeroCreds, costoCred
+                
+                //pedir daatos y establecerlos dentro del objeto de tipo
+                //estudiante presencial previamente creado
                 System.out.println("Ingrese el número de créditos");
                 numeroCreds = entrada.nextInt();
                 System.out.println("Ingrese el costo de cada créditos");
                 costoCred = entrada.nextDouble();
-                // se hace uso de los métodos establecer para asignar valores
-                // a los datos (atributos) del objeto
+                
                 estudianteP.establecerNombresEstudiante(nombresEst);
                 estudianteP.establecerApellidoEstudiante(apellidosEst);
                 estudianteP.establecerIdentificacionEstudiante(identificacionEst);
                 estudianteP.establecerEdadEstudiante(edadEst);
                 estudianteP.establecerNumeroCreditos(numeroCreds);
                 estudianteP.establecerCostoCredito(costoCred);
-                // Se agrega al arreglo estudiantes un objeto de tipo
-                // EstudiantePresencial
+                
+                // se añade el objeto creado a el array list estudiantes
                 estudiantes.add(estudianteP);
                 
             } else {
-                // Si el usuario ingresa un número diferente del valor 1 para 
-                // tipoEstudiante se procede a crear los procesos necesarios para 
-                // crear un objeto de tipo EstudianteDistancia
                 
-                    // Declarar,crear e iniciar objeto tipo EstudianteDistancia
+                
+                    // se crea una instandia de tipo estudiante a distancia
                     EstudianteDistancia estudianteD = new EstudianteDistancia();
-                    // Solicitar ingreso de valores para variables 
-                    // Solicitar numeroAsigs, costoAsig 
-                    // Leer numeroAsigs, costoAsig
+                    
+                    // se piden datos para llenar el objeto de tipo estudiante distancia
                     System.out.println("Ingrese el número de asignaturas");
                     numeroAsigs = entrada.nextInt();
                     System.out.println("Ingrese el costo de cada cada asignatura");
                     costoAsig = entrada.nextDouble();
 
-                    // se hace uso de los métodos establecer para asignar valores
-                    // a los datos (atributos) del objeto
+                    
                     estudianteD.establecerNombresEstudiante(nombresEst);
                     estudianteD.establecerApellidoEstudiante(apellidosEst);
                     estudianteD.establecerIdentificacionEstudiante(identificacionEst);
@@ -103,19 +92,33 @@ public class EjecutaEstudiante {
                     estudianteD.establecerNumeroAsginaturas(numeroAsigs);
                     estudianteD.establecerCostoAsignatura(costoAsig);
                     
-                    // Se agrega al arreglo estudiantes un objeto de tipo
-                    // EstudianteDistancia
+                    // se añade el objeto creado a el array list estudiantes
                     estudiantes.add(estudianteD);
                     
                                                       
             }
-        } while ( op != 0);
+            
+            // se solicita al usuario decidir si ingresar otro estudiante o no
+            System.out.println("Desea ingresar otro estudiante?");
+            System.out.println("1) Si");
+            System.out.println("0) No");
+            op = entrada.nextInt();
+            if (op == 1) {
+                System.out.println("Elija una opcion");
+                System.out.println("1) Ingresar un Estudiante Presencial");
+                System.out.println("2) Ingresar un Estudiante Distancia");
+                op = entrada.nextInt();
+            }
+            //se limpia el buffer del scanner para evitar saltos de linea inconvenientes
+            entrada.nextLine();
+        }
+       
         
         
         
         
-        // ciclo que permite comprobar el polimorfismo
-        // este código no debe ser modificado.
+        // se establece un ciclo que calcula el costo matricula y presenta a 
+        // cada estudiante
         for (int i = 0; i < estudiantes.size(); i++) {
             // 1.  
             estudiantes.get(i).calcularMatricula();
